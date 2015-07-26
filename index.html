@@ -1,0 +1,94 @@
+
+<html>
+    <head>
+      <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+      <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+      <style type="text/css">
+        #head {
+          text-align: center;
+          font-size: 30px;
+        }
+        #intro {
+
+        }
+        .container{
+            width: 720px;
+            margin: auto;       /*margin是調整與視窗邊界的距離(置中)*/
+        }
+        .left{
+            float: left;        /*讓div靠左*/
+            text-align: center;
+            width:400px;
+            height: 300px;
+            margin: auto;
+        }
+        .rules{
+            float: right;       /*讓div靠右*/
+            width: 300px;
+            height: 100px;
+            background-color: lightyellow;
+            margin: auto;
+            border-radius: 5px;
+            border: solid;
+            border-width: 2px;
+        }
+        .blocks {
+          background-color: lightgreen;
+          width: 200px;
+          border-radius: 5px;
+          border: solid;
+          border-width: 2px;
+        }
+        button{
+          background-color: lightblue;
+          border-radius: 5px;
+          height: 40px;
+        }
+      </style>
+    </head>
+    <body>
+        <div class="container">     <!--這個 div 是為了讓包含的兩個 div 可以統一置中-->
+          <header>
+            <div id="head">Digital Interactive Performace Sketch</div><br>
+            <div id="intro">
+              How to add rules?<br>Just drag and drop!<br>
+              Blocks:<br>
+              Rules:<br>
+              Once you finish editing and click "add rule" button, new Rules entry will add under current one and the rule you just add will be shown in  ...<br>
+
+              Please double click to remove any block.<br>
+              <button id="finish">finish edit</button>
+              <button id="new">add rule</button><br><br>
+            </div>
+          </header>
+
+            <!--block menu-->            
+            <div class="left">
+              Blocks<br>
+              <ul style=" list-style: none;">
+                <li class="blocks states">rightHandUp</li>
+                <li class="blocks states">rightHandDown</li>
+                <li class="blocks states">leftHandUp</li>
+                <li class="blocks states">leftHandDown</li>
+                <li class="blocks actions">{ noseRaise }</li>
+                <li class="blocks actions">{ noseLay }</li>
+                <li class="blocks actions">{ bodyRaise }</li>
+                <li class="blocks actions">{ bodyLay }</li>
+                <li class="blocks actions">{ lightOn }</li>
+                <li class="blocks actions">{ lightOff }</li>
+                <li class="blocks actions">{ noAction }</li>
+                <li class="blocks otherwise">otherwise</li>
+                <li class="blocks operators">and</li>
+                <li class="blocks operators">or</li>                
+              </ul>
+            </div>
+
+            <!--rule entry-->
+            Rules<br>
+            <div class="rules newr" id="rule-1"></div>
+            <br><br>            
+        </div>
+        <footer></footer>
+      <script src="dips.js"></script>
+    </body>
+</html>
