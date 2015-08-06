@@ -3,48 +3,7 @@
     <head>
       <script src="//code.jquery.com/jquery-1.10.2.js"></script>
       <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-      <style type="text/css">
-        #head {
-          text-align: center;
-          font-size: 30px;
-        }
-        #intro {
-
-        }
-        .container{
-            width: 720px;
-            margin: auto;       /*margin是調整與視窗邊界的距離(置中)*/
-        }
-        .left{
-            float: left;        /*讓div靠左*/
-            text-align: center;
-            width:400px;
-            height: 300px;
-            margin: auto;
-        }
-        .rules{
-            float: right;       /*讓div靠右*/
-            width: 300px;
-            height: 100px;
-            background-color: lightyellow;
-            margin: auto;
-            border-radius: 5px;
-            border: solid;
-            border-width: 2px;
-        }
-        .blocks {
-          background-color: lightgreen;
-          width: 200px;
-          border-radius: 5px;
-          border: solid;
-          border-width: 2px;
-        }
-        button{
-          background-color: lightblue;
-          border-radius: 5px;
-          height: 40px;
-        }
-      </style>
+      <link rel=stylesheet type="text/css" href="dips.css">
     </head>
     <body>
         <div class="container">     <!--這個 div 是為了讓包含的兩個 div 可以統一置中-->
@@ -64,7 +23,7 @@
 
             <!--block menu-->            
             <div class="left">
-              Blocks<br>
+              Blocks
               <ul style=" list-style: none;">
                 <li class="blocks states">rightHandUp</li>
                 <li class="blocks states">rightHandDown</li>
@@ -84,9 +43,16 @@
             </div>
 
             <!--rule entry-->
-            Rules<br>
-            <div class="rules newr" id="rule-1"></div>
-            <br><br>            
+            <div class="editor">
+              Rules<br>
+              <div class="rules newr" id="rule-1"></div>
+              <br><br>            
+            </div>
+
+            <!-- display rule script -->
+            <div class="result">
+13
+            </div>
         </div>
         <footer></footer>
       <script src="dips.js"></script>

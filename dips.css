@@ -1,0 +1,50 @@
+        #head {
+          text-align: center;
+          font-size: 30px;
+        }
+        #intro {
+
+        }
+        .container{
+            width: 800px;
+            margin: auto;       /*margin是調整與視窗邊界的距離(置中)*/
+        }
+        .left{
+            margin: auto;
+            float: left;        /*讓div靠左*/
+            text-align: center;
+            width:300px;
+            height: 300px;
+        }
+        .editor{
+            text-align: center;
+            margin: auto;
+        }
+        .rules {
+            margin: auto;
+            float: center;       /*讓div靠右*/
+            width: 300px;
+            height: 100px;
+            background-color: lightyellow;
+            border-radius: 5px;
+            border: solid;
+            border-width: 2px;
+        }
+        .blocks {
+          background-color: lightgreen;
+          width: 200px;
+          border-radius: 5px;
+          border: solid;
+          border-width: 2px;
+        }
+        .result {
+          margin: auto;
+          float: right;
+          width: 200px;
+          background-color: red;
+        }
+        button{
+          background-color: lightblue;
+          border-radius: 5px;
+          height: 40px;
+        }
