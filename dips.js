@@ -5,6 +5,8 @@
   };// end of var dips
 
   var _this = '';
+  var ruleList = [];
+
   dips.prototype = {
     init: function(){
       console.log(123 + 'abc');
@@ -92,6 +94,7 @@
                ')' + actions + /*(otherwise ? 'otherwise{' + action2 + '}' : ' ') */
                '\nlistener.instruct(Rule' + count + ')\n';
         $('#result').html(rule);
+        ruleList.push(rule);
         r.removeClass('newr');
         $('.editor').append('<div class="rules newr" id="rule-'+ accumulator + '"></div><br>');
         _this.make_droppable();
@@ -123,7 +126,10 @@
 
   // finised all rules and submit to engine
   $('#finish').click(function(){          
-    console.log($.get('http://140.119.164.161:12345', { rule: $('#result').html()})); 
+    for(var r in ruleList){
+      // console.log(ruleList[r]);
+      console.log($.get('http://localhost:12345', { rule: ruleList[r]}))
+    }
   });
 
   var zIndex = 0;
