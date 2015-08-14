@@ -6,42 +6,46 @@
 
         }
         .container{
-            width: 800px;
+            width: 1000px;
+            height: 1000px;
             margin: auto;       /*margin是調整與視窗邊界的距離(置中)*/
         }
-        .left{
-            margin: auto;
-            float: left;        /*讓div靠左*/
+        .left{                  /* 左邊選擇區 */
+            margin: auto;       
             text-align: center;
             width:300px;
-            height: 300px;
+            float: left; 
         }
-        .editor{
+        .preview {              /* 右方預覽區 */
+          margin: auto;   
+          text-align: center;
+          width: 300px;
+          float: left;       
+        }
+        .editor{                /* 中間編輯器 */
+            margin: auto;
             text-align: center;
-            margin: auto;
-        }
-        .rules {
-            margin: auto;
-            float: center;       /*讓div靠右*/
             width: 300px;
-            height: 100px;
+            float: left;
+        }
+
+        .rules {                /* 中間編輯區內條目 */
+            margin: auto;
+            width: 250px;
+            height: 80px;
             background-color: lightyellow;
             border-radius: 5px;
             border: solid;
             border-width: 2px;
         }
-        .blocks {
+        .blocks {               /* 方塊 */
+          text-align: center;
           background-color: lightgreen;
           width: 200px;
           border-radius: 5px;
           border: solid;
           border-width: 2px;
-        }
-        .result {
-          margin: auto;
-          float: right;
-          width: 200px;
-          background-color: red;
+          text-align: center;
         }
         button{
           background-color: lightblue;

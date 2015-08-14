@@ -13,14 +13,20 @@
     },
     make_droppable: function(){
      $(".rules").droppable({
+        over: function(){ 
+          console.log(this); 
+          //TODO: $(this).background color go bright
+
+        },
         drop: function(e, ui){
+          $(this).addClass("ui-state-highlight");
           if(ui.draggable.hasClass("blocks")) {
             $(this).append($(ui.helper).clone());
 
-            //Pointing to the dragImg class in dropHere and add new class.
+            //Add new class
             $(".rules .blocks").addClass("item-"+counts[0]);
 
-            //Remove the current class (ui-draggable and dragImg)
+            //Remove the current class (ui-draggable)
             $(".rules .item-"+counts[0]).removeClass("blocks ui-draggable ui-draggable-dragging");
 
             // remove when double click
@@ -85,7 +91,7 @@
         rule = imports + ruleName + 'when(' + states + /* more states generator */
                ')' + actions + /*(otherwise ? 'otherwise{' + action2 + '}' : ' ') */
                '\nlistener.instruct(Rule' + count + ')\n';
-        $('footer').html(rule);
+        $('#result').html(rule);
         r.removeClass('newr');
         $('.container').append('<div class="rules newr" id="rule-'+ accumulator + '"></div><br>');
         _this.make_droppable();
@@ -117,7 +123,7 @@
 
   // finised all rules and submit to engine
   $('#finish').click(function(){          
-    console.log($.get('http://140.119.164.161:12345', { rule: $('footer').html()})); 
+    console.log($.get('http://140.119.164.161:12345', { rule: $('#result').html()})); 
   });
 
   var zIndex = 0;
