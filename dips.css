@@ -20,7 +20,7 @@
           margin: auto;   
           text-align: center;
           width: 300px;
-          float: left;       
+          float: left;     
         }
         .editor{                /* 中間編輯器 */
             margin: auto;
@@ -45,8 +45,12 @@
           border-radius: 5px;
           border: solid;
           border-width: 2px;
-          text-align: center;
         }
+        #result {
+          text-align: left;
+          border-width: 2px;
+        }         
+
         button{
           background-color: lightblue;
           border-radius: 5px;

@@ -93,7 +93,7 @@
                '\nlistener.instruct(Rule' + count + ')\n';
         $('#result').html(rule);
         r.removeClass('newr');
-        $('.container').append('<div class="rules newr" id="rule-'+ accumulator + '"></div><br>');
+        $('.editor').append('<div class="rules newr" id="rule-'+ accumulator + '"></div><br>');
         _this.make_droppable();
       }catch(e){
         alert(e);
