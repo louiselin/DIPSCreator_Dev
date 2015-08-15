@@ -9,7 +9,6 @@
 
   dips.prototype = {
     init: function(){
-      console.log(123 + 'abc');
       _this = this;
       //return _this;  // neccessary?
     },
@@ -49,11 +48,7 @@
           stop:function(e,ui){}
         });
     }, // end of make_draggable
-    add_rule: function(){  
-      var r = $('.newr');
-      var l = r.children();
-      var count = parseInt(r[0].id.split('-')[1]);
-      var accumulator = count + 1;
+    make_rule: function(l, count){
       var rule = '';
       var state, effect, action, operator = '', otherwise = 0;
       var imports = 'import com.zgrannan.ubicomp._\n' +
@@ -88,18 +83,29 @@
           default:
             break;
         }              
-      }            
+      }    
+
+      rule = imports + ruleName + 'when(' + states + /* more states generator */
+             ')' + actions + /*(otherwise ? 'otherwise{' + action2 + '}' : ' ') */
+             '\nlistener.instruct(Rule' + count + ')\n';
+
+      return rule;
+    },
+    add_rule: function(){  
+      var r = $('.newr'); // only one newr
+      var l = r.children();
+      var count = parseInt(r[0].id.split('-')[1]);
+      var accumulator = count + 1;
+      var rule = '';
       try{
-        rule = imports + ruleName + 'when(' + states + /* more states generator */
-               ')' + actions + /*(otherwise ? 'otherwise{' + action2 + '}' : ' ') */
-               '\nlistener.instruct(Rule' + count + ')\n';
+        rule = _this.make_rule(l, count);
         $('#result').html(rule);
-        ruleList.push(rule);
-        r.removeClass('newr');
         $('.editor').append('<div class="rules newr" id="rule-'+ accumulator + '"></div><br>');
         _this.make_droppable();
+        r.removeClass('newr');
         r.css("background-color", "rgb(211,211,211)");
-        // console.log(r.css("background-color") == "rgb(211, 211, 211)");
+        // ruleList.push({"rule" : rule, "id" : r[0].id});
+        ruleList.push(r[0].id);
       }catch(e){
         alert(e);
       }
@@ -108,8 +114,6 @@
 
   dips.prototype.init.prototype = dips.prototype;
   window.dips = dips;
-
-  console.log(123);
 
   //Make every clone image unique.
   var counts = [0];
@@ -129,8 +133,14 @@
   // finised all rules and submit to engine
   $('#finish').click(function(){          
     for(var r in ruleList){
-      // console.log(ruleList[r]);
-      console.log($.get('http://localhost:12345', { rule: ruleList[r]}))
+      console.log(ruleList[r]);
+      /* final check if rule is changed */
+      var l = $('#' + ruleList[r]).children();
+      var count = ruleList[r].split('-')[1];
+      var rule = dips().make_rule(l, count);
+      console.log(rule);
+      // console.log($.get('http://localhost:12345', { rule: ruleList[r]}))
+      rule = '';
     }
   });
 
