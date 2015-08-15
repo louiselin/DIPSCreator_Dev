@@ -50,7 +50,7 @@
     }, // end of make_draggable
     make_rule: function(l, count){
       var rule = '';
-      var state, effect, action, operator = '', otherwise = 0;
+      var state, effect, action1, action2, operator = '', otherwise = 0;
       var imports = 'import com.zgrannan.ubicomp._\n' +
                     'import Implicit._\n' +
                     'import Syntax._\n' +
@@ -61,6 +61,7 @@
                     'import DemoState._\n\n';
 
       var ruleName = 'val Rule' + count + ':Rule = ';
+      var action_count = 0;
 
       for( var i = 0; i < l.length; i++){
         // console.log(l[i].classList[0]);
@@ -69,7 +70,13 @@
             states = l[i].innerHTML + ' ';
             break;
           case "actions":
-            actions = l[i].innerHTML + ' ';
+            if(action_count == 0){
+              action_count = 1;
+              actions1 = l[i].innerHTML + ' ';
+            } else {
+              action2 = l[i].innerHTML + ' ';
+              action_count = 0;
+            }
             break;
           case "effects":
             effect = l[i].innerHTML + ' ';
@@ -86,7 +93,7 @@
       }    
 
       rule = imports + ruleName + 'when(' + states + /* more states generator */
-             ')' + actions + /*(otherwise ? 'otherwise{' + action2 + '}' : ' ') */
+             ')' + actions1 + (otherwise ? 'otherwise' + action2 + ' ' : ' ') + 
              '\nlistener.instruct(Rule' + count + ')\n';
 
       return rule;
@@ -104,7 +111,6 @@
         _this.make_droppable();
         r.removeClass('newr');
         r.css("background-color", "rgb(211,211,211)");
-        // ruleList.push({"rule" : rule, "id" : r[0].id});
         ruleList.push(r[0].id);
       }catch(e){
         alert(e);
@@ -137,10 +143,10 @@
       /* final check if rule is changed */
       var l = $('#' + ruleList[r]).children();
       var count = ruleList[r].split('-')[1];
-      var rule = dips().make_rule(l, count);
-      console.log(rule);
-      // console.log($.get('http://localhost:12345', { rule: ruleList[r]}))
-      rule = '';
+      var rule = '';
+      rule = dips().make_rule(l, count);
+      // console.log(rule);
+      console.log($.get('http://localhost:12345', {rule: rule}));
     }
   });
 
