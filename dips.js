@@ -49,7 +49,7 @@
           stop:function(e,ui){}
         });
     }, // end of make_draggable
-    add_rule: function(){    
+    add_rule: function(){  
       var r = $('.newr');
       var l = r.children();
       var count = parseInt(r[0].id.split('-')[1]);
@@ -98,6 +98,8 @@
         r.removeClass('newr');
         $('.editor').append('<div class="rules newr" id="rule-'+ accumulator + '"></div><br>');
         _this.make_droppable();
+        r.css("background-color", "rgb(211,211,211)");
+        // console.log(r.css("background-color") == "rgb(211, 211, 211)");
       }catch(e){
         alert(e);
       }
