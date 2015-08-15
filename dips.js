@@ -106,7 +106,7 @@
       var rule = '';
       try{
         rule = _this.make_rule(l, count);
-        $('#result').html(rule);
+        $('#result').html(rule.replace(/\n/g, '<br>'));
         $('.editor').append('<div class="rules newr" id="rule-'+ accumulator + '"></div><br>');
         _this.make_droppable();
         r.removeClass('newr');
